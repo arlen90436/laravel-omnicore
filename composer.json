@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4" : {
-            "Alren\\Omnicore\\": "src/"
+            "Arlen\\Omnicore\\": "src/"
         },
         "classmap" : [
             "tests"
@@ -33,10 +33,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Alren\\Omnicore\\Providers\\ServiceProvider"
+                "Arlen\\Omnicore\\Providers\\ServiceProvider"
             ],
             "aliases": {
-                "Omnicored": "Alren\\Omnicore\\Facades\\Omnicored"
+                "Omnicored": "Arlen\\Omnicore\\Facades\\Omnicored"
             }
         }
     }
