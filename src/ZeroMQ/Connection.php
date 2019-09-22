@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin\ZeroMQ;
+namespace Arlen\Omnicore\ZeroMQ;
 
 use Denpa\ZeroMQ\Manager;
 
@@ -41,7 +41,7 @@ class Connection
     /**
      * Adds new listener.
      *
-     * @param  \Denpa\Bitcoin\ZeroMQ\Listener  $listener
+     * @param  \Arlen\Omnicore\ZeroMQ\Listener  $listener
      *
      * @return void
      */

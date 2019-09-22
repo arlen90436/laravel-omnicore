@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
-use Denpa\Bitcoin\Responses\LaravelResponse;
+use Arlen\Omnicore\Responses\LaravelResponse;
 
 class LaravelResponseTest extends TestCase
 {

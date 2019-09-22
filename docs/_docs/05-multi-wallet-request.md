@@ -12,7 +12,7 @@ Altcoins that forked after or include [PR 8694](https://github.com/bitcoin/bitco
 ### Making request
 To make multi-wallet request, you'll need to use `wallet($filename)` method to specify wallet file name.
 ```php
-$balance = bitcoind()
+$balance = omnitools()
     ->wallet('wallet2.dat')
     ->getBalance();
 

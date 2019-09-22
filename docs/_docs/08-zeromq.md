@@ -19,15 +19,15 @@ or manually add following lines to the `composer.json`
 ```
 
 ### Bitcoin Core Configuration
-Your Bitcoin Core must be compiled with libzmq (many distributions compile bitcoind with libzmq by default)
+Your Bitcoin Core must be compiled with libzmq (many distributions compile omnitools with libzmq by default)
 
 In order to check this, run
 ```sh
-(bitcoind -h | grep -q zmq) && echo "ZeroMQ support available"`
+(omnitools -h | grep -q zmq) && echo "ZeroMQ support available"`
 ```
 If you get "ZeroMQ support available", then you can use ZeroMQ, otherwise please [build](https://github.com/bitcoin/bitcoin/blob/master/doc/build-unix.md) Bitcoin Core with zmq support yourself.
 
-Once have Bitcoin Core with ZeroMQ support, set the following options in bitcoind.conf (host and port can be different):
+Once have Bitcoin Core with ZeroMQ support, set the following options in omnitools.conf (host and port can be different):
 ```
 zmqpubhashtx=tcp://127.0.0.1:28332
 zmqpubhashblock=tcp://127.0.0.1:28332
@@ -36,7 +36,7 @@ zmqpubrawtx=tcp://127.0.0.1:28332
 ```
 
 ### Package Configuration
-Set `zeromq` key for your connection in `config/bitcoind.php`:
+Set `zeromq` key for your connection in `config/omnitools.php`:
 ```php
 'default' => [
     ...
@@ -50,10 +50,10 @@ Set `zeromq` key for your connection in `config/bitcoind.php`:
 ### Subscribing to topics
 You can subscribe to ZeroMQ topics using `on($topic, callable $callback)` method as illustrated in example below.
 ```php
-bitcoind()->on('hashblock', function ($blockhash, $sequence) {
+omnitools()->on('hashblock', function ($blockhash, $sequence) {
     // $blockhash var now contains block hash
     // of newest block broadcasted by daemon
-    $block = bitcoind()->getBlock($blockhash);
+    $block = omnitools()->getBlock($blockhash);
 
     printf(
         "New block %u found. Contains %u transactions.\n",

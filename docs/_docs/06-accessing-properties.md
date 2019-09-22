@@ -9,7 +9,7 @@ Calling <abbr title="Remote Procedure Call">RPC</abbr> method, yields an instanc
 ### Array Access
 You can work with response as regular php array.
 ```php
-// $block = bitcoind()->getBlock($blockhash);
+// $block = omnitools()->getBlock($blockhash);
 if (isset($block['height'])) {
     echo $block['height'];
 }
@@ -18,7 +18,7 @@ if (isset($block['height'])) {
 ### Dot Notation
 Any of the methods listed in [Response Methods]({{ 'docs/response/methods' | relative_url }}) can be used on certain path provided as dot notation.  
 ```php
-// $block = bitcoind()->getBlock($blockhash);
+// $block = omnitools()->getBlock($blockhash);
 $txid = '5f2a97541613c5122290e17a6c654c443338e895d79b7131622778f6f798f851';
 if ($block('tx')->contains($txid)) {
 	// block contains transaction with this txid
@@ -26,6 +26,6 @@ if ($block('tx')->contains($txid)) {
 ```
 or get certain value
 ```php
-// $block = bitcoind()->getBlock($blockhash);
+// $block = omnitools()->getBlock($blockhash);
 echo $block('tx.0');
 ```

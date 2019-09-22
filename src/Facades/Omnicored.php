@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin\Facades;
+namespace Arlen\Omnicore\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Bitcoind extends Facade
+class Omnicored extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -15,6 +15,6 @@ class Bitcoind extends Facade
      */
     protected static function getFacadeAccessor() : string
     {
-        return 'bitcoind';
+        return 'omnicored';
     }
 }

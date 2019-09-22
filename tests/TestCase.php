@@ -2,13 +2,13 @@
 
 use Monolog\Logger;
 use Monolog\Handler\TestHandler;
-use Denpa\Bitcoin\Traits\Bitcoind;
-use Denpa\Bitcoin\Providers\ServiceProvider;
+use Arlen\Omnicore\Traits\Omnicored;
+use Arlen\Omnicore\Providers\ServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
 abstract class TestCase extends OrchestraTestCase
 {
-    use Bitcoind;
+    use Omnicored;
 
     /**
      * Get package providers.
@@ -34,7 +34,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageAliases($app)
     {
         return [
-            'Bitcoind' => 'Denpa\Bitcoin\Facades\Bitcoind',
+            'Omnicored' => 'Arlen\Omnicore\Facades\Omnicored',
         ];
     }
 
@@ -63,7 +63,7 @@ abstract class TestCase extends OrchestraTestCase
             ],
         ]);
 
-        $app['config']->set('bitcoind.default', [
+        $app['config']->set('omnicored.default', [
             'scheme'   => 'http',
             'host'     => 'localhost',
             'port'     => 8332,
@@ -77,7 +77,7 @@ abstract class TestCase extends OrchestraTestCase
             ],
         ]);
 
-        $app['config']->set('bitcoind.litecoin', [
+        $app['config']->set('omnicored.litecoin', [
             'scheme'   => 'http',
             'host'     => 'localhost',
             'port'     => 9332,

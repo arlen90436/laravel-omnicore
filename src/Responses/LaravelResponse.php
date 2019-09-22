@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin\Responses;
+namespace Arlen\Omnicore\Responses;
 
 use Illuminate\Support\Collection;
 
-class LaravelResponse extends BitcoindResponse
+class LaravelResponse extends OmnicoredResponse
 {
     /**
      * Gets result as Laravel Collection.

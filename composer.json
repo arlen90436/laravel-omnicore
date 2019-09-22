@@ -1,27 +1,27 @@
 {
-    "name": "denpa/laravel-bitcoinrpc",
+    "name": "alren/laravel-omnicore",
     "type": "library",
-    "description": "Bitcoin JSON-RPC Service Provider for Laravel",
-    "keywords": ["laravel","bitcoin","api","jsonrpc","guzzle"],
-    "homepage": "https://github.com/denpamusic/laravel-bitcoinrpc",
+    "description": "Omnicore USDT JSON-RPC Service Provider for Laravel",
+    "keywords": ["laravel","omnicore","bitcoin","api","jsonrpc","guzzle"],
+    "homepage": "https://github.com/arlen90436/laravel-omnicore",
     "license": "MIT",
     "authors": [
         {
-            "name": "Denis Paavilainen",
-            "email": "denpa@netfleet.space",
-            "role": "Developer"
+            "name": "Arlen",
+            "homepage": "https://github.com/arlen90436",
+            "role": "Author"
         }
     ],
     "require": {
         "php": ">=7.1",
-        "denpa/php-bitcoinrpc": "^2.1"
+        "arlen/omni-tools": "^1.1"
     },
     "require-dev": {
         "orchestra/testbench": "~3.0"
     },
     "autoload": {
         "psr-4" : {
-            "Denpa\\Bitcoin\\": "src/"
+            "Alren\\Omnicore\\": "src/"
         },
         "classmap" : [
             "tests"
@@ -30,16 +30,13 @@
             "src/helpers.php"
         ]
     },
-    "suggest": {
-        "denpa/laravel-zeromq": "Required to subscribe to zeromq broadcasts."
-    },
     "extra": {
         "laravel": {
             "providers": [
-                "Denpa\\Bitcoin\\Providers\\ServiceProvider"
+                "Alren\\Omnicore\\Providers\\ServiceProvider"
             ],
             "aliases": {
-                "Bitcoind": "Denpa\\Bitcoin\\Facades\\Bitcoind"
+                "Omnicored": "Alren\\Omnicore\\Facades\\Omnicored"
             }
         }
     }

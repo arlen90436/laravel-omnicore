@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin;
+namespace Arlen\Omnicore;
 
 use BadMethodCallException;
 use Illuminate\Support\Arr;
@@ -12,7 +12,7 @@ class LaravelClient extends Client
     /**
      * ZeroMQ connection.
      *
-     * @var \Denpa\Bitcoin\ZeroMQ\Connection|null
+     * @var \Arlen\Omnicore\ZeroMQ\Connection|null
      */
     protected $zeromq = null;
 

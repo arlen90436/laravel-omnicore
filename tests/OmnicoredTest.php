@@ -1,21 +1,21 @@
 <?php
 
-use Denpa\Bitcoin\ClientFactory;
+use Arlen\Omnicore\ClientFactory;
 use GuzzleHttp\Client as GuzzleHttp;
-use Denpa\Bitcoin\LaravelClient as BitcoinClient;
-use Denpa\Bitcoin\Facades\Bitcoind as BitcoindFacade;
+use Arlen\Omnicore\LaravelClient as OmnicoreClient;
+use Arlen\Omnicore\Facades\Omnicored as OmnicoredFacade;
 
-class BitcoindTest extends TestCase
+class OmnicoredTest extends TestCase
 {
     /**
      * Assert that configs are equal.
      *
-     * @param  \Denpa\Bitcoin\Client  $client
+     * @param  \Arlen\Omnicore\Client  $client
      * @param  array  $config
      *
      * @return void
      */
-    protected function assertConfigEquals(BitcoinClient $client, array $config)
+    protected function assertConfigEquals(OmnicoreClient $client, array $config)
     {
         $this->assertEquals($config['scheme'], $client->getConfig()['scheme']);
         $this->assertEquals($config['host'], $client->getConfig()['host']);
@@ -34,15 +34,15 @@ class BitcoindTest extends TestCase
     public function testServiceIsAvailable()
     {
         $this->assertInstanceOf(
-            ClientFactory::class, $this->app['bitcoind']
+            ClientFactory::class, $this->app['omnicored']
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class, $this->app['bitcoind.client']
+            OmnicoreClient::class, $this->app['omnicored.client']
         );
 
-        $this->assertTrue($this->app->bound('bitcoind'));
-        $this->assertTrue($this->app->bound('bitcoind.client'));
+        $this->assertTrue($this->app->bound('omnicored'));
+        $this->assertTrue($this->app->bound('omnicored.client'));
     }
 
     /**
@@ -54,17 +54,17 @@ class BitcoindTest extends TestCase
     {
         $this->assertInstanceOf(
             ClientFactory::class,
-            BitcoindFacade::getFacadeRoot()
+            OmnicoredFacade::getFacadeRoot()
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class,
-            BitcoindFacade::getFacadeRoot()->client()
+            OmnicoreClient::class,
+            OmnicoredFacade::getFacadeRoot()->client()
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class,
-            BitcoindFacade::getFacadeRoot()->client('default')
+            OmnicoreClient::class,
+            OmnicoredFacade::getFacadeRoot()->client('default')
         );
     }
 
@@ -76,15 +76,15 @@ class BitcoindTest extends TestCase
     public function testHelper()
     {
         $this->assertInstanceOf(
-            ClientFactory::class, bitcoind()
+            ClientFactory::class, omnicored()
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class, bitcoind()->client()
+            OmnicoreClient::class, omnicored()->client()
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class, bitcoind()->client('default')
+            OmnicoreClient::class, omnicored()->client('default')
         );
     }
 
@@ -96,15 +96,15 @@ class BitcoindTest extends TestCase
     public function testTrait()
     {
         $this->assertInstanceOf(
-            ClientFactory::class, $this->bitcoind()
+            ClientFactory::class, $this->omnicored()
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class, $this->bitcoind()->client()
+            OmnicoreClient::class, $this->omnicored()->client()
         );
 
         $this->assertInstanceOf(
-            BitcoinClient::class, $this->bitcoind()->client('default')
+            OmnicoreClient::class, $this->omnicored()->client('default')
         );
     }
 
@@ -118,8 +118,8 @@ class BitcoindTest extends TestCase
     public function testConfig($name)
     {
         $this->assertConfigEquals(
-            bitcoind()->client($name),
-            config("bitcoind.$name")
+            omnicored()->client($name),
+            config("omnicored.$name")
         );
     }
 
@@ -146,7 +146,7 @@ class BitcoindTest extends TestCase
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Could not find client configuration [nonexistent]');
 
-        $config = bitcoind()->client('nonexistent')->getConfig();
+        $config = omnicored()->client('nonexistent')->getConfig();
     }
 
     /**
@@ -156,7 +156,7 @@ class BitcoindTest extends TestCase
      */
     public function testLegacyConfig()
     {
-        config()->set('bitcoind', [
+        config()->set('omnicored', [
             'scheme'   => 'http',
             'host'     => 'localhost',
             'port'     => 8332,
@@ -165,7 +165,7 @@ class BitcoindTest extends TestCase
             'ca'       => null,
         ]);
 
-        $this->assertConfigEquals(bitcoind()->client(), config('bitcoind'));
+        $this->assertConfigEquals(omnicored()->client(), config('omnicored'));
         $this->assertLogContains('You are using legacy config format');
     }
 
@@ -176,7 +176,7 @@ class BitcoindTest extends TestCase
      */
     public function testMagicCall()
     {
-        $this->assertInstanceOf(GuzzleHttp::class, bitcoind()->getClient());
+        $this->assertInstanceOf(GuzzleHttp::class, omnicored()->getClient());
     }
 
     /**
@@ -194,6 +194,6 @@ class BitcoindTest extends TestCase
             'password' => 'testpass3',
         ];
 
-        $this->assertConfigEquals(bitcoind()->make($config), $config);
+        $this->assertConfigEquals(omnicored()->make($config), $config);
     }
 }

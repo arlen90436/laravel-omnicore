@@ -2,15 +2,18 @@
 
 declare(strict_types=1);
 
+namespace Arlen\Omnicore\Traits;
+
 use Arlen\Omnicore\ClientFactory;
 
-if (! function_exists('omnicored')) {
+trait Omnicored
+{
     /**
-     * Get omnicored client instance by name.
+     * Get omnicored client factory instance.
      *
      * @return \Arlen\Omnicore\ClientFactory
      */
-    function omnicored() : ClientFactory
+    public function omnicored() : ClientFactory
     {
         return app('omnicored');
     }

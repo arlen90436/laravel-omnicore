@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin\ZeroMQ;
+namespace Arlen\Omnicore\ZeroMQ;
 
 use UnexpectedValueException;
 use Denpa\ZeroMQ\Connection as ZMQConnection;

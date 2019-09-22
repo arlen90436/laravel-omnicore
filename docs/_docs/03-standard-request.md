@@ -16,7 +16,7 @@ _Note: method names are case-insensitive, so getBlock() and getblock() will yiel
 Helper functions provide an easy way to call JSON-RPC methods.
 They are, however, make testing somewhat difficult and can cause name collisions.
 
-The following example illustrates the use of `bitcoind()` helper to call the [getBlock()](https://bitcoin.org/en/developer-reference#getblock) method.
+The following example illustrates the use of `omnitools()` helper to call the [getBlock()](https://bitcoin.org/en/developer-reference#getblock) method.
 ```php
 <?php
 
@@ -32,7 +32,7 @@ class BitcoinController extends Controller
    public function blockInfo()
    {
       $hash = '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f';
-      $block = bitcoind()->getBlock($hash);
+      $block = omnitools()->getBlock($hash);
       return response()->json($block->get());
    }
 }
@@ -61,7 +61,7 @@ class BitcoinController extends Controller
    public function blockInfo()
    {
       $hash = '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f';
-      $block = $this->bitcoind()->getBlock($hash);
+      $block = $this->omnitools()->getBlock($hash);
       return response()->json($block->get());
    }
 }
@@ -111,13 +111,13 @@ class BitcoinController extends Controller
   /**
    * Get block info.
    *
-   * @param  \Denpa\Bitcoin\Client  $bitcoind
+   * @param  \Denpa\Bitcoin\Client  $omnitools
    * @return \Illuminate\Http\JsonResponse
    */
-   public function blockInfo(BitcoinClient $bitcoind)
+   public function blockInfo(BitcoinClient $omnitools)
    {
       $hash = '000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f';
-      $block = $bitcoind->getBlock($hash);
+      $block = $omnitools->getBlock($hash);
       return response()->json($block->get());
    }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin\Providers;
+namespace Arlen\Omnicore\Providers;
 
-use Denpa\Bitcoin\ClientFactory;
+use Arlen\Omnicore\ClientFactory;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
 class ServiceProvider extends IlluminateServiceProvider
@@ -18,8 +18,8 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         $path = realpath(__DIR__.'/../../config/config.php');
 
-        $this->publishes([$path => config_path('bitcoind.php')], 'config');
-        $this->mergeConfigFrom($path, 'bitcoind');
+        $this->publishes([$path => config_path('omnicored.php')], 'config');
+        $this->mergeConfigFrom($path, 'omnicored');
     }
 
     /**
@@ -43,8 +43,8 @@ class ServiceProvider extends IlluminateServiceProvider
     protected function registerAliases() : void
     {
         $aliases = [
-            'bitcoind'         => 'Denpa\Bitcoin\ClientFactory',
-            'bitcoind.client'  => 'Denpa\Bitcoin\LaravelClient',
+            'omnicored'         => 'Arlen\Omnicore\ClientFactory',
+            'omnicored.client'  => 'Arlen\Omnicore\LaravelClient',
         ];
 
         foreach ($aliases as $key => $aliases) {
@@ -61,8 +61,8 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected function registerFactory() : void
     {
-        $this->app->singleton('bitcoind', function ($app) {
-            return new ClientFactory(config('bitcoind'), $app['log']);
+        $this->app->singleton('omnicored', function ($app) {
+            return new ClientFactory(config('omnicored'), $app['log']);
         });
     }
 
@@ -73,8 +73,8 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected function registerClient() : void
     {
-        $this->app->bind('bitcoind.client', function ($app) {
-            return $app['bitcoind']->client();
+        $this->app->bind('omnicored.client', function ($app) {
+            return $app['omnicored']->client();
         });
     }
 }

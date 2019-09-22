@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Denpa\Bitcoin;
+namespace Arlen\Omnicore;
 
 use Psr\Log\LoggerInterface;
 use InvalidArgumentException;
-use Denpa\Bitcoin\LaravelClient as BitcoinClient;
+use Arlen\Omnicore\LaravelClient as OmnicoreClient;
 
 class ClientFactory
 {
@@ -76,11 +76,11 @@ class ClientFactory
     {
         if (isset($this->config['host']) && ! is_array($this->config['host'])) {
             $this->logger->warning(
-                'laravel-bitcoind: You are using legacy config format which '.
+                'laravel-omnicore: You are using legacy config format which '.
                 'was deprecated and will be removed in the next version. '.
                 'Please update your config file by running [php artisan '.
                 'vendor:publish '.
-                '--provider="Denpa\Bitcoin\Providers\ServiceProvider" --force].'
+                '--provider="Arlen\Omnicore\Providers\ServiceProvider" --force].'
             );
 
             return $this->withDefaults($this->config);
@@ -100,9 +100,9 @@ class ClientFactory
      *
      * @param  string  $name
      *
-     * @return \Denpa\Bitcoin\Client
+     * @return \Arlen\Omnicore\Client
      */
-    public function client(string $name = 'default') : BitcoinClient
+    public function client(string $name = 'default') : OmnicoreClient
     {
         if (! array_key_exists($name, $this->clients)) {
             $config = $this->getConfig($name);
@@ -118,11 +118,11 @@ class ClientFactory
      *
      * @param  array  $config
      *
-     * @return \Denpa\Bitcoin\Client
+     * @return \Arlen\Omnicore\Client
      */
-    public function make(array $config = []) : BitcoinClient
+    public function make(array $config = []) : OmnicoreClient
     {
-        return new BitcoinClient($config);
+        return new OmnicoreClient($config);
     }
 
     /**

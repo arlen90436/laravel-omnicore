@@ -5,7 +5,7 @@ return [
     'default' => [
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind JSON-RPC Scheme
+        | Omnicored JSON-RPC Scheme
         |--------------------------------------------------------------------------
         | URI scheme of Bitcoin Core's JSON-RPC server.
         |
@@ -16,11 +16,11 @@ return [
         |
         */
 
-        'scheme' => env('BITCOIND_SCHEME', 'http'),
+        'scheme' => env('OMNICORED_SCHEME', 'http'),
 
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind JSON-RPC Host
+        | Omnicored JSON-RPC Host
         |--------------------------------------------------------------------------
         | Tells service provider which hostname or IP address
         | Bitcoin Core is running at.
@@ -34,11 +34,11 @@ return [
         |
         */
 
-        'host' => env('BITCOIND_HOST', 'localhost'),
+        'host' => env('OMNICORED_HOST', 'localhost'),
 
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind JSON-RPC Port
+        | Omnicored JSON-RPC Port
         |--------------------------------------------------------------------------
         | The port at which Bitcoin Core is listening for JSON-RPC connections.
         | Default is 8332 for mainnet and 18332 for testnet.
@@ -47,33 +47,33 @@ return [
         |
         */
 
-        'port' => env('BITCOIND_PORT', 8332),
+        'port' => env('OMNICORED_PORT', 8332),
 
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind JSON-RPC User
+        | Omnicored JSON-RPC User
         |--------------------------------------------------------------------------
         | Username needs to be set exactly as in bitcoin.conf file
         | rpcuser=<username>.
         |
         */
 
-        'user' => env('BITCOIND_USER', ''),
+        'user' => env('OMNICORED_USER', ''),
 
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind JSON-RPC Password
+        | Omnicored JSON-RPC Password
         |--------------------------------------------------------------------------
         | Password needs to be set exactly as in bitcoin.conf file
         | rpcpassword=<password>.
         |
         */
 
-        'password' => env('BITCOIND_PASSWORD', ''),
+        'password' => env('OMNICORED_PASSWORD', ''),
 
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind JSON-RPC Server CA
+        | Omnicored JSON-RPC Server CA
         |--------------------------------------------------------------------------
         | If you're using SSL (https) to connect to your Bitcoin Core
         | you can specify custom ca package to verify against.
@@ -102,7 +102,7 @@ return [
 
         /*
         |--------------------------------------------------------------------------
-        | Bitcoind ZeroMQ options
+        | Omnicored ZeroMQ options
         |--------------------------------------------------------------------------
         | Used to subscribe to zeromq topics pushed by daemon.
         | In order to use this you mush install "denpa\laravel-zeromq" package,

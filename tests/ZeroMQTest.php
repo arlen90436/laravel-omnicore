@@ -48,7 +48,7 @@ class ZeroMQTest extends TestCase
 
         $this->manager->expects($this->once())
             ->method('make')
-            ->with(config('bitcoind.default.zeromq'))
+            ->with(config('omnicored.default.zeromq'))
             ->willReturn($this->connection);
 
         $this->connection
@@ -63,7 +63,7 @@ class ZeroMQTest extends TestCase
                 ]);
             }));
 
-        $this->bitcoind()->on('hashblock', $callback);
+        $this->omnicored()->on('hashblock', $callback);
     }
 
     /**
@@ -79,7 +79,7 @@ class ZeroMQTest extends TestCase
 
         $this->manager->expects($this->once())
             ->method('make')
-            ->with(config('bitcoind.default.zeromq'))
+            ->with(config('omnicored.default.zeromq'))
             ->willReturn($this->connection);
 
         $this->connection
@@ -107,7 +107,7 @@ class ZeroMQTest extends TestCase
             'Broken sequence on sequence number 3. Detected lost notifications.'
         );
 
-        $this->bitcoind()->on('hashblock', $callback);
+        $this->omnicored()->on('hashblock', $callback);
     }
 
     /**
@@ -125,7 +125,7 @@ class ZeroMQTest extends TestCase
             ->expects($this->never())
             ->method('subscribe');
 
-        $this->bitcoind()
+        $this->omnicored()
             ->client('litecoin')
             ->on('hashblock', $callback);
     }

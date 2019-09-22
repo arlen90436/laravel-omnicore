@@ -1,7 +1,7 @@
 <?php
 
-use Denpa\Bitcoin\LaravelClient;
-use Denpa\Bitcoin\Responses\LaravelResponse;
+use Arlen\Omnicore\LaravelClient;
+use Arlen\Omnicore\Responses\LaravelResponse;
 
 class LaravelClientTest extends TestCase
 {
@@ -34,7 +34,7 @@ class LaravelClientTest extends TestCase
             'Please install it.'
         );
 
-        $this->bitcoind()->on('hashblock', function () {
+        $this->omnicored()->on('hashblock', function () {
         });
     }
 }

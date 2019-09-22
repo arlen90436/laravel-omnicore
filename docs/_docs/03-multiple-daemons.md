@@ -6,7 +6,7 @@ classes: wide
 ---
 Since [version 1.2.0]({{ 'release/1.2.0' | relative_url }}), laravel-bitcoinrpc allows you to use multiple configurations to connect to different bitcoin or even altcoin daemons.
 
-You'll need to define parameters for each of your connections in `./config/bitcoind.php` (see [example](https://github.com/denpamusic/laravel-bitcoinrpc/blob/master/config/config.php#L108))
+You'll need to define parameters for each of your connections in `./config/omnitools.php` (see [example](https://github.com/denpamusic/laravel-bitcoinrpc/blob/master/config/config.php#L108))
 
 ```php
 <?php
@@ -40,7 +40,7 @@ return [
 
 Then, you can call specific configuration by passing it's name to `client()` method through any means described in [Making Requests]({{ 'docs/request/standard' | relative_url }}) section.
 ```php
-$blockhash = bitcoind()
+$blockhash = omnitools()
     ->client('litecoin')
     ->getBestBlockHash();
 ```
